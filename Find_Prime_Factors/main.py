@@ -1,8 +1,10 @@
 import pyximport
 pyximport.install()
-from find_prime_factors import find_prime_factors
+from functions import list_prime_factors, factors_prime
 
 
 if __name__ == "__main__":
-    print(find_prime_factors(630))
-    print(find_prime_factors(13))
+    print(list_prime_factors(760))
+    print(factors_prime(760))
+    print(list_prime_factors(13))
+    print(factors_prime(13))
