@@ -6,8 +6,8 @@ cdef is_prime(int p):
     check whether it is evenly divisible by any prime number between 2 and √n 
     (i.e. that the division leaves no remainder). If so, then n is composite. Otherwise, it is prime.
     """
-    if (p == 2):
-        return True
+    if (p == 1):
+        return False
     cdef int i = 2
     for i in range (2, int(sqrt(p)) + 1):
         if p % i == 0:
@@ -22,8 +22,11 @@ cpdef list_prime_factors (int number):
     cdef list factors = []
     cdef int i = 2
     for i in range(2, number + 1):
-        if (number % i == 0 and is_prime(i)):
-            factors.append(i)
+        if (number % i != 0): 
+            continue
+        if not is_prime(i): 
+            continue
+        factors.append(i)
     return factors
 
 
@@ -34,8 +37,8 @@ cpdef factors_prime(int number):
     """
     cdef list factors = []
     cdef int i = 2
-    while number > 1:
-        if(number % i == 0 and is_prime(i)):
+    while number >= i:
+        if(number % i == 0 ):
             factors.append(i)
             number /= i
         else:
